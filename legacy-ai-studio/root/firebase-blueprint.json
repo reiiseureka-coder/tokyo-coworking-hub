@@ -1,0 +1,85 @@
+{
+  "entities": {
+    "Facility": {
+      "title": "Facility",
+      "description": "コワーキングスペース施設情報",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "施設名" },
+        "description": { "type": "string", "description": "説明文" },
+        "address": { "type": "string", "description": "住所" },
+        "prefecture": { "type": "string", "description": "都道府県" },
+        "city": { "type": "string", "description": "市区町村" },
+        "area": { "type": "string", "description": "エリア" },
+        "nearestStation": { "type": "string", "description": "最寄駅" },
+        "walkMinutes": { "type": "number", "description": "駅徒歩分数" },
+        "priceInfo": { "type": "string", "description": "価格情報" },
+        "businessHours": { "type": "string", "description": "営業時間" },
+        "hasDropIn": { "type": "boolean", "description": "ドロップイン可否" },
+        "canCall": { "type": "boolean", "description": "通話可否" },
+        "hasPrivateRoom": { "type": "boolean", "description": "個室有無" },
+        "seatTypes": { "type": "array", "items": { "type": "string" }, "description": "席タイプ" },
+        "hasPower": { "type": "boolean", "description": "電源有無" },
+        "hasWifi": { "type": "boolean", "description": "Wi-Fi有無" },
+        "quietnessLevel": { "type": "number", "description": "静かさ目安" },
+        "isBusinessInquiryAvailable": { "type": "boolean", "description": "法人利用可否" },
+        "images": { "type": "array", "items": { "type": "string" }, "description": "写真" },
+        "status": { "type": "string", "enum": ["published", "draft"], "description": "掲載状態" },
+        "isFeatured": { "type": "boolean", "description": "おすすめフラグ" },
+        "sponsoredRank": { "type": "number", "description": "広告ランク" },
+        "averageRating": { "type": "number", "description": "平均評価" },
+        "reviewCount": { "type": "number", "description": "口コミ数" },
+        "createdAt": { "type": "number", "description": "作成日" },
+        "updatedAt": { "type": "number", "description": "更新日" }
+      },
+      "required": ["name", "address", "area", "status"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "施設への口コミ",
+      "type": "object",
+      "properties": {
+        "facilityId": { "type": "string", "description": "施設ID" },
+        "userId": { "type": "string", "description": "ユーザーID" },
+        "userName": { "type": "string", "description": "ユーザー名" },
+        "rating": { "type": "number", "description": "総合評価" },
+        "quietnessRating": { "type": "number", "description": "静かさ評価" },
+        "callEaseRating": { "type": "number", "description": "通話しやすさ評価" },
+        "facilitySatisfactionRating": { "type": "number", "description": "設備満足度評価" },
+        "comment": { "type": "string", "description": "テキスト" },
+        "createdAt": { "type": "number", "description": "投稿日" }
+      },
+      "required": ["facilityId", "userId", "rating", "comment"]
+    },
+    "BusinessInquiry": {
+      "title": "BusinessInquiry",
+      "description": "法人問い合わせ",
+      "type": "object",
+      "properties": {
+        "facilityId": { "type": "string", "description": "対象施設ID" },
+        "companyName": { "type": "string", "description": "会社名" },
+        "contactName": { "type": "string", "description": "担当者名" },
+        "email": { "type": "string", "description": "メールアドレス" },
+        "phoneNumber": { "type": "string", "description": "電話番号" },
+        "content": { "type": "string", "description": "問い合わせ内容" },
+        "createdAt": { "type": "number", "description": "送信日時" },
+        "status": { "type": "string", "enum": ["new", "contacted", "closed"], "description": "対応状況" }
+      },
+      "required": ["companyName", "contactName", "email", "content"]
+    }
+  },
+  "firestore": {
+    "/facilities/{facilityId}": {
+      "schema": "Facility",
+      "description": "施設情報コレクション"
+    },
+    "/facilities/{facilityId}/reviews/{reviewId}": {
+      "schema": "Review",
+      "description": "施設ごとの口コミサブコレクション"
+    },
+    "/businessInquiries/{inquiryId}": {
+      "schema": "BusinessInquiry",
+      "description": "法人問い合わせコレクション"
+    }
+  }
+}
