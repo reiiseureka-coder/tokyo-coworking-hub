@@ -77,6 +77,13 @@ create policy "Published facilities are viewable by everyone"
 on public.facilities for select
 using (status = 'published');
 
+drop policy if exists "Admins can manage facilities" on public.facilities;
+create policy "Admins can manage facilities"
+on public.facilities for all
+to authenticated
+using (lower(coalesce(auth.jwt() ->> 'email', '')) in ('rei.is.eureka@gmail.com'))
+with check (lower(coalesce(auth.jwt() ->> 'email', '')) in ('rei.is.eureka@gmail.com'));
+
 drop policy if exists "Reviews are viewable by everyone" on public.reviews;
 create policy "Reviews are viewable by everyone"
 on public.reviews for select

@@ -9,5 +9,6 @@ coverage/
 .next/
 out/
 tsconfig.tsbuildinfo
+tsconfig.typecheck.tsbuildinfo
 .vercel/
 .git-broken-backup-*/

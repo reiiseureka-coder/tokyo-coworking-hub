@@ -3,6 +3,7 @@ export type InquiryStatus = "new" | "contacted" | "closed";
 
 export type Facility = {
   id: string;
+  status?: "draft" | "published";
   slug: string;
   name: string;
   description: string;
@@ -55,4 +56,30 @@ export type FacilityFilters = {
   wifi?: boolean;
   power?: boolean;
   stationNearby?: boolean;
+};
+
+export type FacilityInsertInput = {
+  name: string;
+  description: string;
+  address: string;
+  prefecture: string;
+  city: string;
+  area: string;
+  nearestStation: string;
+  walkMinutes: number;
+  priceInfo: string;
+  businessHours: string;
+  imageUrl: string;
+  officialUrl?: string;
+  seatTypes: string[];
+  quietnessLevel: number;
+  hasDropIn: boolean;
+  canCall: boolean;
+  hasPrivateRoom: boolean;
+  hasPower: boolean;
+  hasWifi: boolean;
+  businessInquiryAvailable: boolean;
+  featured: boolean;
+  sponsoredRank: number;
+  status: "draft" | "published";
 };
