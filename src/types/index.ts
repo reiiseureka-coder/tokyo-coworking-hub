@@ -25,6 +25,7 @@ export type Facility = {
   businessInquiryAvailable: boolean;
   officialUrl?: string;
   imageUrl: string;
+  galleryImages?: string[];
   averageRating: number;
   reviewCount: number;
   featured: boolean;

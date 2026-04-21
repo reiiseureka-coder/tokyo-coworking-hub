@@ -108,6 +108,9 @@ function mapFacilityRecord(record: Record<string, unknown>): Facility {
     ),
     officialUrl: record.official_url ? String(record.official_url) : undefined,
     imageUrl: String(record.image_url ?? record.imageUrl),
+    galleryImages: Array.isArray(record.gallery_images)
+      ? (record.gallery_images as string[])
+      : [String(record.image_url ?? record.imageUrl)],
     averageRating: Number(record.average_rating ?? record.averageRating ?? 0),
     reviewCount: Number(record.review_count ?? record.reviewCount ?? 0),
     featured: Boolean(record.featured),

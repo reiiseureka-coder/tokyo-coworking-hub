@@ -26,6 +26,12 @@ export const mockFacilities: Facility[] = [
     officialUrl: "https://example.com/shinjuku-workplace",
     imageUrl:
       "https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?auto=format&fit=crop&q=80&w=1400",
+    galleryImages: [
+      "https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?auto=format&fit=crop&q=80&w=1400",
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=1400",
+      "https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&q=80&w=1400",
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1400",
+    ],
     averageRating: 4.6,
     reviewCount: 18,
     featured: true,
@@ -56,6 +62,12 @@ export const mockFacilities: Facility[] = [
     officialUrl: "https://example.com/shibuya-creative-base",
     imageUrl:
       "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1400",
+    galleryImages: [
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1400",
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1400",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=1400",
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=1400",
+    ],
     averageRating: 4.2,
     reviewCount: 11,
     featured: false,
@@ -86,6 +98,12 @@ export const mockFacilities: Facility[] = [
     officialUrl: "https://example.com/tokyo-station-suite",
     imageUrl:
       "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=1400",
+    galleryImages: [
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=1400",
+      "https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&q=80&w=1400",
+      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=1400",
+      "https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?auto=format&fit=crop&q=80&w=1400",
+    ],
     averageRating: 4.8,
     reviewCount: 7,
     featured: true,
