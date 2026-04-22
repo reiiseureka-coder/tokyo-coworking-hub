@@ -50,6 +50,11 @@ export async function getFacilities(filters: FacilityFilters = {}) {
 
   const { data } = await supabase.from("facilities").select("*").eq("status", "published");
   const facilities = ((data as Record<string, unknown>[] | null) ?? []).map(mapFacilityRecord);
+
+  if (facilities.length === 0) {
+    return sortFacilities(filterFacilities(mockFacilities, filters));
+  }
+
   return sortFacilities(filterFacilities(facilities, filters));
 }
 
@@ -61,7 +66,12 @@ export async function getFacilityBySlug(slug: string) {
   }
 
   const { data } = await supabase.from("facilities").select("*").eq("slug", slug).single();
-  return data ? mapFacilityRecord(data as Record<string, unknown>) : null;
+
+  if (!data) {
+    return mockFacilities.find((facility) => facility.slug === slug) ?? null;
+  }
+
+  return mapFacilityRecord(data as Record<string, unknown>);
 }
 
 export async function getReviewsForFacility(facilityId: string): Promise<Review[]> {
@@ -75,7 +85,13 @@ export async function getReviewsForFacility(facilityId: string): Promise<Review[
     ascending: false,
   });
 
-  return ((data as Record<string, unknown>[] | null) ?? []).map(mapReviewRecord);
+  const reviews = ((data as Record<string, unknown>[] | null) ?? []).map(mapReviewRecord);
+
+  if (reviews.length === 0) {
+    return mockReviews.filter((review) => review.facilityId === facilityId);
+  }
+
+  return reviews;
 }
 
 export function getFeaturedFacilities(limit = 3) {
